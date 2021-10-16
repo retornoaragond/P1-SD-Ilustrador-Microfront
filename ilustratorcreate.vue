@@ -27,6 +27,7 @@
 </template>
 
 <script>
+// import axios from 'axios'
 module.exports = {
     props:['title','create'],
     data:function () {
@@ -36,12 +37,11 @@ module.exports = {
             name : '',
             nationality:'',
             birthday:'',
-            comics:[{'comic_id':'','comic_name':''}]
+            comics:[]
         }
     },
     created () {
         this.getIlustrators()
-       
     },
     methods: {
         getIlustrators(){
@@ -58,8 +58,18 @@ module.exports = {
             })) + 1);
         },
         createIlustrator(){
-            let ilus = {"id":'7',"name":this.name,"nationality":this.nationality,"birthday":this.birthday,"comics":this.comics};
+            let ilus = {"id":this.id,"name":this.name,"nationality":this.nationality,"birthday":this.birthday,"comics":this.comics};
             console.log(JSON.stringify(ilus));
+            const opc = {
+                method:"POST",
+                headers:{"Content-Type": "application/json"},
+                body: JSON.stringify({ id:this.id,name:this.name,nationality:this.nationality,birthday:this.birthday,comics:this.comics})
+            };
+            fetch("https://p1-sd-ilustrador-microservice.herokuapp.com/ilustrador",opc)
+                .then((data) => {
+                console.log('Print1: ' + data.name);
+                router.push('/ilustrator');
+            })
             /*fetch('https://p1-sd-ilustrador-microservice.herokuapp.com/ilustrador',
                 { headers: {'Accept': 'application/json'},
                   method: 'POST',

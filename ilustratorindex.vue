@@ -15,7 +15,8 @@
                             <td>
                                 <router-link class="button" :to="'/ilustrator/'+ilus.id"><img src="./images/font-eye.png" style="width:20px"></router-link>
                                 <router-link class="button" :to="'/ilustrator/edit/'+ilus.id"><img src="./images/font-edit.png" style="width:20px"></router-link>
-                                <router-link class="button" :to="'/ilustrator/delete/'+ilus.id"><img src="./images/delete.png" style="width:20px"></router-link>
+                                <!-- <router-link class="button" :to="'/ilustrator/delete/'+ilus.id"><img src="./images/delete.png" style="width:20px"></router-link>-->
+                                <router-link class="button" to="/ilustrator" @click="deleteIlustrator(ilus.id)" ><img src="./images/delete.png" style="width:20px"></router-link>
                             </td>
                         </tr>
                     </tbody>
@@ -43,7 +44,10 @@ module.exports = {
             .then((data) => {
                 this.ilustrators = data;
             })
-        }  
+        },
+        deleteIlustrator(id){
+            fetch('https://p1-sd-ilustrador-microservice.herokuapp.com/ilustrador/'+id,'?_method=delete')
+        }
     }
 }
 
