@@ -49,7 +49,7 @@ module.exports = {
             .then((response) => response.json())
             .then((data) => {
                 this.ilustrators = data; 
-                this.id = this.getNextId(this.ilustrators)               
+                this.id = this.getNextId(this.ilustrators);               
             })
         },
         getNextId(obj) {
@@ -70,17 +70,6 @@ module.exports = {
                 console.log('Print1: ' + data.name);
                 router.push('/ilustrator');
             })
-            /*fetch('https://p1-sd-ilustrador-microservice.herokuapp.com/ilustrador',
-                { headers: {'Accept': 'application/json'},
-                  method: 'POST',
-                  mode: 'no-cors',
-                  body: JSON.stringify(ilus)
-                })
-            .then((data) => {
-                console.log('Print1: ' + JSON.stringify(ilus).name);
-                router.push('/ilustrator');
-            })*/
-            // console.log('Print: ' + this.quest[0].desc);
         }
     }
 }

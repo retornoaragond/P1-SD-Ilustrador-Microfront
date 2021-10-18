@@ -16,7 +16,8 @@
                                 <router-link class="button" :to="'/ilustrator/'+ilus.id"><img src="./images/font-eye.png" style="width:20px"></router-link>
                                 <router-link class="button" :to="'/ilustrator/edit/'+ilus.id"><img src="./images/font-edit.png" style="width:20px"></router-link>
                                 <!-- <router-link class="button" :to="'/ilustrator/delete/'+ilus.id"><img src="./images/delete.png" style="width:20px"></router-link>-->
-                                <router-link class="button" to="/ilustrator" @click="deleteIlustrator(ilus.id)" ><img src="./images/delete.png" style="width:20px"></router-link>
+                                <!-- <router-link class="button" to="/ilustrator" @click="deleteIlustrator(ilus.id)" ><img src="./images/delete.png" style="width:20px"></router-link> -->
+                                <button type="button" class="btn btn-primary" v-on:click="deleteIlustrator(ilus.id)">Delete</button>
                             </td>
                         </tr>
                     </tbody>
@@ -46,7 +47,16 @@ module.exports = {
             })
         },
         deleteIlustrator(id){
-            fetch('https://p1-sd-ilustrador-microservice.herokuapp.com/ilustrador/'+id,'?_method=delete')
+            console.log('Hola1 '+id);
+            const opc = {
+                method:"POST",
+                headers:{"Content-Type": "application/json"}
+            };
+            fetch("https://p1-sd-ilustrador-microservice.herokuapp.com/ilustrador/delete/"+id,opc)
+                .then((data) => {
+                console.log('Print1: ' + data.name);
+            })
+
         }
     }
 }
