@@ -154,7 +154,6 @@ module.exports = {
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
   display: table;
-  transition: opacity .3s ease;
 }
 
 .modal-wrapper {
