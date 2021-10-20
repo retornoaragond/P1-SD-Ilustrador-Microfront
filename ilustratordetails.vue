@@ -26,7 +26,7 @@
             <tbody>
                 <tr v-for="comic in this.ilustrator.comics">                       
                     <td>
-                        <li><a :href="'https://p1-sd-revistas-microservice.herokuapp.com/revista/'+comic.comic_id">{{comic.comic_name}}</li>
+                        <li><a :href="'https://comics-p1-sd.netlify.app/#/revista/'+comic.comic_id">{{comic.comic_name}}</li>
                         <!-- Cambiar por el microfront end -->
                     </td>
                 </tr>
