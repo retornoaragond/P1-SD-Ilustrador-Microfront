@@ -102,7 +102,8 @@ module.exports = {
         }
     },
     created () {
-        this.getIlustrator(app.$route.params.id)
+        this.getIlustrator(app.$route.params.id),
+        this.getComics()
     },
     methods: {
         getIlustrator(id){
