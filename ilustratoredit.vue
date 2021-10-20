@@ -64,7 +64,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr v-for="comic in this.comp">  
+                                            <tr v-for="comic in this.comics">  
                                                 <td>{{comic.name}}</td>                     
                                                 <td>
                                                    <button type="button" class="btn btn-primary" v-on:click="addcomic(comic.id,comic.name)">Add</button>
@@ -114,6 +114,13 @@ module.exports = {
         },
         openModal(){
             this.showmodal = true
+        },
+        getComics(){
+            fetch('https://p1-sd-revistas-microservice.herokuapp.com/revista',{ headers: {'Accept': 'application/json'}})
+            .then((response) => response.json())
+            .then((data) => {
+                this.comics = data;
+            })
         },
         updateIlustrator(){
             let ilus = {"id":this.ilustrator.id,"name":this.ilustrator.name,"nationality":this.ilustrator.nationality,"birthday":this.ilustrator.birthday,"comics":this.ilustrator.comics};
